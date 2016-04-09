@@ -5,9 +5,11 @@ var Router ={
     init: function(app) {
         
         // Home page
-        app.get ('/', controllers.Home.index);
+        app.get('/', controllers.Home.index);
         //Users
         app.get('/users', controllers.Users.index);
+        //About page
+        app.get('/about', controllers.About.index);
         
     }
     
