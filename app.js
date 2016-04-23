@@ -4,15 +4,22 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var consolidate = require ('consolidate');
+var nunjucks = require('nunjucks');
+//Local Dependencies
 var router = require('./routes');
 
+//Create app instance
 var app = express();
 
 // view engine setup
+//Set the location of our views directory
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
+//Set Jade as the default view engine
+//app.set('view engine', 'jade');
+//configure nunjucks engine so thatit knows where our
+//views arre located
+consolidate.requires.nunjucks = nunjucks.configure('views')
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
